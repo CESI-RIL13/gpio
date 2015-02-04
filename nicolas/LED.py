@@ -6,7 +6,7 @@ from morse import *
 import wiringpi2 as wpi
 wpi.wiringPiSetup()
 
-PIN = 7
+PIN = 0
 LED_SHORT = 0.25
 LED_LONG = 1
 MOT = 2
@@ -31,6 +31,7 @@ def writeMorseCode():
     car =''
     if wpi.digitalRead(PIN):
         print "je lis le pin %d" %PIN
+	
 
 
 # phrase = 'hello world'
@@ -41,5 +42,7 @@ def writeMorseCode():
 while 1:
     try:
         writeMorseCode()
+	time.sleep(0.1)
     except KeyboardInterrupt:
         print "salut!!"
+	break
