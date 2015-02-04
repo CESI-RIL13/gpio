@@ -48,3 +48,6 @@ def toMorse(car):
     if car == ' ':
         return ''
     return codeMorse[corespondance.index(car)]
+
+def fromMorse(code):
+    return corespondance[codeMorse.index(code)]
