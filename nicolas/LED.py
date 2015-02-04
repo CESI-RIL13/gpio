@@ -21,5 +21,4 @@ def clignoteLED(phrase):
         time.sleep(0.5)
 
 phrase = 'hello world'
-for car in phrase:
-    clignoteLED(phrase.upper())
+clignoteLED(phrase.upper())
