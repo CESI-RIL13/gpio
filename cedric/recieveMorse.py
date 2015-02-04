@@ -8,6 +8,7 @@ from time import sleep
 bouton=""
 debut=datetime.now()
 duree=""
+PIN=0
 wpi.wiringPiSetup()
 
 # phrase = raw_input("taper du morse : ")
@@ -19,10 +20,10 @@ wpi.wiringPiSetup()
 # print retour
 
 while(1):
-    bouton=wpi.digitalRead(7)
+    bouton=wpi.digitalRead(PIN)
     if bouton == 1:
         debut=datetime.now()
         while bouton == 1:
-            bouton=wpi.digitalRead(7)
+            bouton=wpi.digitalRead(PIN)
             sleep(0.02)
         print datetime.now()-debut
