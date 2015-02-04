@@ -68,17 +68,16 @@ def tradMorse(phrase):
                 wpi.digitalWrite(pin, 0)
             elif impulsion == "-":
                 wpi.digitalWrite(pin, 1)
-                time.sleep(0.75)
+                time.sleep(1.25)
                 wpi.digitalWrite(pin, 0)
             elif impulsion == "+":
-                time.sleep(0.75)
-            time.sleep(0.25)
+                time.sleep(2.25)
+            time.sleep(0.75)
         time.sleep(1)
 
 i = 0
 while(i == 0) :
     phrase = raw_input('Phrase à traduire :')
     phrase = phrase.upper()
-    #print phrase
     tradMorse(phrase)
 
