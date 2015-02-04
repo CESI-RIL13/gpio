@@ -11,6 +11,9 @@ def toMorse(message):
             morse = morse + codeMorse[corespondance.index(car)] + " "
     return morse
 
+def fromMorse(signal):
+    return corespondance[codeMorse.index(signal)]
+
 codeMorse = [
  	".-",       #A
  	"-...",     #B
