@@ -36,11 +36,11 @@ while(1):
         while bouton == 0:
             bouton=wpi.digitalRead(PIN)
             sleep(0.02)
-        duree=datetime.now()-debut
-        if duree.seconds > 1:
-            code += " "
-        elif duree.seconds >2:
-            break
+            duree=datetime.now()-debut
+            if duree.seconds > 1:
+                code += " "
+            elif duree.seconds >2:
+                break
 
 code = code.split()
 retour = ""
