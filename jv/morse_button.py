@@ -86,9 +86,9 @@ while(i==0):
         if md.debut != 0:
             md.fin = time.clock()
             md. writeMorse()
-        elif md.stop == 0:
-            md.stop = time.clock()
         else:
+            if md.stop == 0:
+                md.stop = time.clock()
             if time.clock()-md.stop > 2:
                 md.writeLetter()
     time.sleep(0.1)
