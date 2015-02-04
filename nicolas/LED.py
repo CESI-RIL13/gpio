@@ -5,29 +5,20 @@ from morse import *
 import wiringpi2 as wpi
 wpi.wiringPiSetup()
 
-def clignoteCourt(pin):
-    wpi.digitalWrite(pin, 1)
-    time.sleep(1)
+def clignoteLED(phrase):
+    for car in toMorse(phrase):
+        if(car == '.'):
+            wpi.digitalWrite(7, 1)
+            time.sleep(0.25)
+        elif(car == '-'):
+            wpi.digitalWrite(7, 1)
+            time.sleep(1)
+        else:
+            time.sleep(2)
 
-    wpi.digitalWrite(pin, 0)
-    time.sleep(1)
+        wpi.digitalWrite(7, 0)
+        time.sleep(0.5)
 
-def clignoteLong(pin):
-    wpi.digitalWrite(pin, 1)
-    time.sleep(2)
-
-    wpi.digitalWrite(pin, 0)
-    time.sleep(1)
-
-def choixClignote(mot):
-    for car in toMorse(mot):
-        if(car <> ' '):
-            if(car == '.'):
-                clignoteCourt(7)
-            else:
-                clignoteLong(7)
-
-
-
-mot = 'bonjour'
-choixClignote(mot)
+phrase = 'hello world'
+for car in phrase:
+    clignoteLED(phrase.upper())
