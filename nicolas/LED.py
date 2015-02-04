@@ -29,6 +29,7 @@ def clignoteLED(morseCar):
 
 
 def writeMorseCode():
+    car = ''
     while 1:
         myInput = wpi.digitalRead(PIN)
         debut = datetime.now()
