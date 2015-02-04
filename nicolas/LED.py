@@ -36,11 +36,10 @@ def writeMorseCode():
         if(myInput):
             while myInput == 1:
                 myInput = wpi.digitalRead(PIN)
-                time.sleep(0.02)
 
             temps = datetime.now() - debut
 
-            if(temps.seconds < 1):
+            if(temps.seconds < 0.5):
                 car = car + '.'
             else:
                 car = car + '-'
@@ -48,17 +47,11 @@ def writeMorseCode():
         else:
             while myInput == 0:
                 myInput = wpi.digitalRead(PIN)
-                time.sleep(0.02)
 
-            temps = datetime.now() - debut
+                temps = datetime.now() - debut
 
-            if(temps.seconds > 2):
-                return fromMorse(car)
-
-
-
-
-
+                if(temps.seconds > 1 and car != ''):
+                    return fromMorse(car)
 
 
 # phrase = 'hello world'
@@ -66,8 +59,9 @@ def writeMorseCode():
 # for car in phrase:
 #     clignoteLED(toMorse(car.upper()))
 
+phrase = ''
 while 1:
     try:
-        print writeMorseCode()
+        phrase = phrase + writeMorseCode()
     except KeyboardInterrupt:
-        print "salut!!"
+        print phrase
