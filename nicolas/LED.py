@@ -6,11 +6,12 @@ import wiringpi2 as wpi
 wpi.wiringPiSetup()
 
 def clignoteLED(phrase):
-    for car in toMorse(phrase):
-        if(car == '.'):
+    for car in phrase:
+        convertCar = toMorse(car)
+        if(convertCar == '.'):
             wpi.digitalWrite(7, 1)
             time.sleep(0.25)
-        elif(car == '-'):
+        elif(convertCar == '-'):
             wpi.digitalWrite(7, 1)
             time.sleep(1)
         else:
