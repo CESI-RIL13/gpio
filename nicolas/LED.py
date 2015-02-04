@@ -5,8 +5,8 @@ from morse import *
 import wiringpi2 as wpi
 wpi.wiringPiSetup()
 
-def clignoteLED(phrase):
-    for car in phrase:
+def clignoteLED(morseCar):
+    for car in morseCar:
         convertCar = toMorse(car)
         if(convertCar == '.'):
             wpi.digitalWrite(7, 1)
@@ -21,4 +21,6 @@ def clignoteLED(phrase):
         time.sleep(0.5)
 
 phrase = 'hello world'
-clignoteLED(phrase.upper())
+
+for car in phrase:
+    clignoteLED(toMorse(car.upper()))
