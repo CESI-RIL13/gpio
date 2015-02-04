@@ -44,8 +44,10 @@ codeMorse = [
 
 corespondance = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.0123456789"
 
-def toMorse(phrase):
-    result = ''
-    for car in phrase:
-        result = result + codeMorse[corespondance.index(car)] + ' '
-    return result
+def toMorse(car):
+    if car == ' ':
+        return ''
+    return codeMorse[corespondance.index(car)]
+
+def fromMorse(code):
+    return corespondance[codeMorse.index(code)]

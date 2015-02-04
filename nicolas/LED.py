@@ -1,33 +1,45 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 import time
 from morse import *
 import wiringpi2 as wpi
 wpi.wiringPiSetup()
 
-def clignoteCourt(pin):
-    wpi.digitalWrite(pin, 1)
-    time.sleep(1)
+PIN = 7
+LED_SHORT = 0.25
+LED_LONG = 1
+MOT = 2
+CARACTERE = 0.5
 
-    wpi.digitalWrite(pin, 0)
-    time.sleep(1)
+def clignoteLED(morseCar):
+    for car in morseCar:
+        if(car == '.'):
+            wpi.digitalWrite(PIN, 1)
+            time.sleep(LED_SHORT)
+        elif(car == '-'):
+            wpi.digitalWrite(PIN, 1)
+            time.sleep(LED_LONG)
+        else:
+            time.sleep(MOT)
 
-def clignoteLong(pin):
-    wpi.digitalWrite(pin, 1)
-    time.sleep(2)
-
-    wpi.digitalWrite(pin, 0)
-    time.sleep(1)
-
-def choixClignote(mot):
-    for car in toMorse(mot):
-        if(car <> ' '):
-            if(car == '.'):
-                clignoteCourt(7)
-            else:
-                clignoteLong(7)
+        wpi.digitalWrite(PIN, 0)
+        time.sleep(CARACTERE)
 
 
+def writeMorseCode():
+    car =''
+    if wpi.digitalRead(PIN):
+        print "je lis le pin %d" %PIN
 
-mot = 'bonjour'
-choixClignote(mot)
+
+# phrase = 'hello world'
+#
+# for car in phrase:
+#     clignoteLED(toMorse(car.upper()))
+
+while 1:
+    try:
+        writeMorseCode()
+    except KeyboardInterrupt:
+        print "salut!!"
