@@ -7,11 +7,10 @@ wpi.wiringPiSetup()
 
 def clignoteLED(morseCar):
     for car in morseCar:
-        convertCar = toMorse(car)
-        if(convertCar == '.'):
+        if(car == '.'):
             wpi.digitalWrite(7, 1)
             time.sleep(0.25)
-        elif(convertCar == '-'):
+        elif(car == '-'):
             wpi.digitalWrite(7, 1)
             time.sleep(1)
         else:
